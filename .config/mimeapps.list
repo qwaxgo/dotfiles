@@ -1,0 +1,29 @@
+[Default Applications]
+x-scheme-handler/http=userapp-Floorp-EEX7J2.desktop
+x-scheme-handler/https=userapp-Floorp-EEX7J2.desktop
+x-scheme-handler/chrome=userapp-Floorp-EEX7J2.desktop
+text/html=userapp-Floorp-EEX7J2.desktop
+application/x-extension-htm=userapp-Floorp-EEX7J2.desktop
+application/x-extension-html=userapp-Floorp-EEX7J2.desktop
+application/x-extension-shtml=userapp-Floorp-EEX7J2.desktop
+application/xhtml+xml=userapp-Floorp-EEX7J2.desktop
+application/x-extension-xhtml=userapp-Floorp-EEX7J2.desktop
+application/x-extension-xht=userapp-Floorp-EEX7J2.desktop
+application/x-zerosize=userapp-wezterm -e lvim %f-OJLXK2.desktop
+application/octet-stream=vim.desktop
+
+[Added Associations]
+x-scheme-handler/http=userapp-Floorp-EEX7J2.desktop;
+x-scheme-handler/https=userapp-Floorp-EEX7J2.desktop;
+x-scheme-handler/chrome=userapp-Floorp-EEX7J2.desktop;
+text/html=userapp-Floorp-EEX7J2.desktop;
+application/x-extension-htm=userapp-Floorp-EEX7J2.desktop;
+application/x-extension-html=userapp-Floorp-EEX7J2.desktop;
+application/x-extension-shtml=userapp-Floorp-EEX7J2.desktop;
+application/xhtml+xml=userapp-Floorp-EEX7J2.desktop;
+application/x-extension-xhtml=userapp-Floorp-EEX7J2.desktop;
+application/x-extension-xht=userapp-Floorp-EEX7J2.desktop;
+text/plain=userapp-wezterm -e lvim %f-OJLXK2.desktop;userapp-wezterm -e vim %f-RDFMK2.desktop;wezterm -e lvim %f;
+application/x-zerosize=userapp-wezterm -e lvim %f-OJLXK2.desktop;
+application/json=userapp-wezterm -e lvim %f-OJLXK2.desktop;
+application/octet-stream=vim.desktop;

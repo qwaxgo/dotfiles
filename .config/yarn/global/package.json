@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "create-astro": "^4.7.4",
+    "depcheck": "^1.4.7",
+    "npm-check-updates": "^16.14.15"
+  }
+}
