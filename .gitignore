@@ -6,8 +6,8 @@
 
 ### install scripts ###
 
-!/.install_scripts/
-!/.install_scripts/link-to-homedir.sh
+!/install_scripts/
+!/install_scripts/link-to-homedir.sh
 
 ### home ###
 
