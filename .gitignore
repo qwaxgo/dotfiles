@@ -1,0 +1,147 @@
+### all ignore ###
+/*
+/.**
+/.config/**
+
+### not ignore ###
+
+### home ###
+
+!/.gitignore
+!/.zshrc
+!/.zshenv
+!/.profile
+!/.zimrc
+!/.bashrc
+!/.starship.toml
+!/.config
+
+### gtk ###
+
+!/.gtkrc-2.0
+!/.config/gtk-3.0/
+!/.config/gtk-3.0/bookmarks
+!/.config/gtk-3.0/settings.ini
+
+### config ###
+
+!/.config/user-dirs.dirs
+!/.config/mimeapps.list
+!/.config/pavucontrol.ini
+
+### wezterm ###
+!/.config/wezterm/
+!/.config/wezterm/wezterm.lua
+
+### sway ###
+
+!/.config/sway/
+!/.config/sway/config
+!/.config/sway/cheatsheet
+!/.config/sway/keyboard.conf
+!/.config/sway/sway.png
+!/.config/sway/swaylock.png
+!/.config/sway/config.d/
+!/.config/sway/config.d/50-systemd-user.conf
+!/.config/sway/config.d/application_defaults
+!/.config/sway/config.d/autostart_applications
+!/.config/sway/config.d/clamshell
+!/.config/sway/config.d/default
+!/.config/sway/config.d/input
+!/.config/sway/config.d/output
+!/.config/sway/config.d/theme
+!/.config/sway/scripts/
+!/.config/sway/scripts/clamshell.sh
+!/.config/sway/scripts/import-gsettings
+!/.config/sway/scripts/lockman.sh
+!/.config/sway/scripts/screenshot.sh
+!/.config/sway/scripts/swayfader.py
+!/.config/sway/scripts/weather.sh
+
+### swaylock ###
+
+!/.config/swaylock/
+!/.config/swaylock/config
+!/.config/swaylock/qt5ct/
+!/.config/swaylock/qt5ct/qt5ct.conf
+
+### waybar ###
+
+!/.config/waybar/
+!/.config/waybar/config
+!/.config/waybar/style.css
+!/.config/waybar/scripts/
+!/.config/waybar/scripts/keyhint.sh
+!/.config/waybar/scripts/PBPbattery.sh
+!/.config/waybar/scripts/power-menu.sh
+!/.config/waybar/scripts/weather.sh
+
+### wofi ###
+
+!/.config/wofi/
+!/.config/wofi/config
+!/.config/wofi/config.power
+!/.config/wofi/config.screenshot
+!/.config/wofi/style.css
+!/.config/wofi/style.widgets.css
+!/.config/wofi/windows.py
+
+### mako ###
+
+!/.config/mako/
+!/.config/mako/config
+
+### xfce4 ###
+
+!/.config/xfce4/
+!/.config/xfce4/terminal/
+!/.config/xfce4/terminal/terminalrc
+!/.config/xfce4/xfconf/
+!/.config/xfce4/xfconf/xfce-perchannel-xml/
+!/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+!/.config/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml
+!/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-terminal.xml
+
+### Thunar ###
+
+!/.config/Thunar/
+!/.config/Thunar/uca.xml
+
+### systemd ###
+
+!/.config/systemd/
+!/.config/systemd/user/
+!/.config/systemd/user/**
+!/.config/environment.d/
+!/.config/environment.d/**
+
+### htop ###
+
+!/.config/htop/
+!/.config/htop/htoprc
+
+### fcitx5 ###
+
+!/.config/fcitx5/
+!/.config/fcitx5/profile
+!/.config/fcitx5/config
+!/.config/fcitx5/conf/
+!/.config/fcitx5/conf/notifications.conf
+
+### neofetch ###
+
+!/.config/neofetch/
+!/.config/neofetch/config.conf
+
+### lunarvim ###
+
+!/.config/lvim/
+!/.config/lvim/config.lua
+!/.config/lvim/ftplugin/
+!/.config/lvim/ftplugin/lua.lua
+
+### yarn ###
+
+!/.config/yarn/
+!/.config/yarn/global/
+!/.config/yarn/global/package.json
