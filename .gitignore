@@ -1,9 +1,13 @@
 ### all ignore ###
 /*
 /.**
-/.config/**
 
 ### not ignore ###
+
+### install scripts ###
+
+!/.install_scripts/
+!/.install_scripts/link-to-homedir.sh
 
 ### home ###
 
@@ -145,3 +149,11 @@
 !/.config/yarn/
 !/.config/yarn/global/
 !/.config/yarn/global/package.json
+
+### xed ###
+
+!/.config/xed/
+
+### yay ###
+
+!/.config/yay/
