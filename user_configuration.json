@@ -1,0 +1,205 @@
+{
+    "additional-repositories": [
+        "multilib"
+    ],
+    "archinstall-language": "English",
+    "audio_config": {
+        "audio": "pipewire"
+    },
+    "bootloader": "Systemd-boot",
+    "config_version": "3.0.2",
+    "disk_config": {
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/nvme0n1",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "26883a27-f7b5-4c95-9b15-8140bf97bdd7",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/",
+                        "obj_id": "8a33c680-fabe-43a4-adab-d1cedc6cc9ca",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 999129350144
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ]
+    },
+    "disk_encryption": null,
+    "hostname": "archsenax",
+    "kernels": [
+        "linux-zen"
+    ],
+    "locale_config": {
+        "kb_layout": "jp106",
+        "sys_enc": "UTF-8",
+        "sys_lang": "ja_JP.UTF-8"
+    },
+    "mirror_config": {
+        "custom_mirrors": [],
+        "mirror_regions": {
+            "Japan": [
+                "http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch",
+                "https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch",
+                "http://ftp.tsukuba.wide.ad.jp/Linux/archlinux/$repo/os/$arch",
+                "http://jp.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "https://jp.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "http://mirrors.cat.net/archlinux/$repo/os/$arch",
+                "https://mirrors.cat.net/archlinux/$repo/os/$arch",
+                "http://mirror.nishi.network/archlinux/$repo/os/$arch",
+                "https://mirror.nishi.network/archlinux/$repo/os/$arch",
+                "http://repo.jing.rocks/archlinux/$repo/os/$arch",
+                "https://repo.jing.rocks/archlinux/$repo/os/$arch",
+                "http://www.miraa.jp/archlinux/$repo/os/$arch",
+                "https://www.miraa.jp/archlinux/$repo/os/$arch",
+                "http://mirror.aria-on-the-planet.es/archlinux/$repo/os/$arch",
+                "https://mirror.aria-on-the-planet.es/archlinux/$repo/os/$arch",
+                "http://mirror.hashy0917.net/archlinux/$repo/os/$arch",
+                "https://mirror.hashy0917.net/archlinux/$repo/os/$arch"
+            ],
+            "South Korea": [
+                "http://ftp.kaist.ac.kr/ArchLinux/$repo/os/$arch",
+                "http://kr.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "https://kr.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "http://ftp.lanet.kr/pub/archlinux/$repo/os/$arch",
+                "https://ftp.lanet.kr/pub/archlinux/$repo/os/$arch",
+                "http://mirror.siwoo.org/archlinux/$repo/os/$arch",
+                "https://mirror.siwoo.org/archlinux/$repo/os/$arch",
+                "http://mirror.funami.tech/arch/$repo/os/$arch",
+                "https://mirror.funami.tech/arch/$repo/os/$arch",
+                "http://mirror.yuki.net.uk/archlinux/$repo/os/$arch",
+                "https://mirror.yuki.net.uk/archlinux/$repo/os/$arch"
+            ],
+            "Taiwan": [
+                "http://ftp.tku.edu.tw/Linux/ArchLinux/$repo/os/$arch",
+                "http://archlinux.cs.nycu.edu.tw/$repo/os/$arch",
+                "https://archlinux.cs.nycu.edu.tw/$repo/os/$arch",
+                "http://tw.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "https://tw.mirrors.cicku.me/archlinux/$repo/os/$arch",
+                "http://archlinux.ccns.ncku.edu.tw/archlinux/$repo/os/$arch",
+                "https://archlinux.ccns.ncku.edu.tw/archlinux/$repo/os/$arch",
+                "http://free.nchc.org.tw/arch/$repo/os/$arch",
+                "http://mirror.archlinux.tw/ArchLinux/$repo/os/$arch",
+                "https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch",
+                "https://taipei.mirror.pkgbuild.com/$repo/os/$arch",
+                "http://mirror.twds.com.tw/archlinux/$repo/os/$arch",
+                "https://mirror.twds.com.tw/archlinux/$repo/os/$arch"
+            ]
+        }
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "packages": [
+        "noto-fonts-cjk",
+        "fcitx5-im",
+        "fcitx5-mozc",
+        "neovim",
+        "stow",
+        "discord",
+        "vivaldi",
+        "git",
+        "zsh",
+        "htop",
+        "less",
+        "openssh",
+        "rsync",
+        "reflector",
+        "trash-cli",
+        "tree",
+        "fzf",
+        "jq",
+        "zip",
+        "unzip",
+        "whois",
+        "rlwrap",
+        "barrier",
+        "cronie",
+        "discord",
+        "wireshark-qt",
+        "cups",
+        "cups-pdf",
+        "libreoffice-fresh",
+        "ttf-font-awesome",
+        "ttf-liberation",
+        "ttf-firacode-nerd",
+        "ttf-fira-code",
+        "vlc",
+        "ffmpeg",
+        "gimp",
+        "inkscape",
+        "steam",
+        "steam-native-runtime"
+    ],
+    "parallel downloads": 0,
+    "profile_config": {
+        "gfx_driver": "Intel (open-source)",
+        "greeter": "sddm",
+        "profile": {
+            "custom_settings": {
+                "KDE Plasma": {}
+            },
+            "details": [
+                "KDE Plasma"
+            ],
+            "main": "Desktop"
+        }
+    },
+    "save_config": null,
+    "swap": true,
+    "timezone": "Asia/Tokyo",
+    "uki": true,
+    "version": "3.0.2"
+}
