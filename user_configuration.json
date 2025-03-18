@@ -165,7 +165,7 @@
         "unzip",
         "whois",
         "rlwrap",
-        "barrier",
+        "input-leap",
         "cronie",
         "discord",
         "wireshark-qt",
