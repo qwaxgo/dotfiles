@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -14,7 +14,22 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
+    };
+  };
+
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  networking.hostName = "nixos-qwaxgo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -23,7 +38,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
@@ -58,6 +73,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  
+  sound.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -85,8 +102,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+   #  thunderbird
     ];
+    shell = pkgs.zsh
   };
 
   # Install firefox.
@@ -109,17 +127,117 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs = {
+    git = {
+      enable=true;
+    };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+    starship = {
+      enable = true;
+    };
+    zsh = {
+      enable = true;
+    };
+    noisetorch.enable = true
+  }
+
+  i18n.inputMethod = {
+    enables = "fcitx5";
+    fcitx5.addons = [pkgs.fcitx5-mozc];
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerdfonts
+      migu
+    ];
+    fontDir.enable = true;
+    packages = with pkgs; [
+    # Cica
+    # cf. https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/ricty/default.nix
+      (stdenv.mkDerivation rec {
+        pname = "cica";
+        version = "5.0.3";
+        src = fetchurl {
+          url = "https://github.com/miiton/Cica/releases/download/v${version}/Cica_v${version}.zip";
+          sha256 = "cbd1bcf1f3fd1ddbffe444369c76e42529add8538b25aeb75ab682d398b0506f";
+        };
+        nativeBuildInputs = [ unzip ];
+        unpackPhase = "unzip $src";
+        installPhase = "install -m644 --target $out/share/fonts/truetype/cica -D Cica-*.ttf";
+      })
+    ];
+    fontconfig = {
+      defaultFonts = {
+        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
+	sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
+	monospace = ["Cica" "Noto Color Emoji"];
+	emoji = ["Noto Color Emoji"];
+      };
+      localConf = ''
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+	<fontconfig>
+	  <description>Change default fonts for Steam client</description>
+	  <match>
+	    <test name ="prgname">
+	      <string>steamwebhelper</string>
+            </test>
+	    <test name="family" qual="any">
+	      <string>sans-serif</string>
+            </test>
+	    <edit mode="prepend" name="family">
+	      <string>Migu 1P</string>
+	    </edit>
+          </match>
+	</fontconfig>
+      '';
+    };
+  }
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+
+  services.tailscale.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    trustedInterFaces = ["tailscale0"];
+    allowedUDPPorts = [config.services.tailscale.port];
+  }
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+	setSocketVariable = true;
+      }
+    }
+  }
+
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -128,9 +246,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-    };
-  };
 }
