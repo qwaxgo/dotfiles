@@ -21,12 +21,11 @@
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
     };
-  };
-
-  gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   networking.hostName = "nixos-qwaxgo"; # Define your hostname.
@@ -74,8 +73,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   
-  sound.enable = true;
-
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -104,7 +101,7 @@
       kdePackages.kate
    #  thunderbird
     ];
-    shell = pkgs.zsh
+    shell = pkgs.zsh;
   };
 
   # Install firefox.
@@ -143,11 +140,11 @@
     zsh = {
       enable = true;
     };
-    noisetorch.enable = true
-  }
+    noisetorch.enable = true;
+  };
 
   i18n.inputMethod = {
-    enables = "fcitx5";
+    enabled = "fcitx5";
     fcitx5.addons = [pkgs.fcitx5-mozc];
   };
 
@@ -201,7 +198,7 @@
 	</fontconfig>
       '';
     };
-  }
+  };
 
   # List services that you want to enable:
 
@@ -216,9 +213,9 @@
   # Or disable the firewall altogether.
   networking.firewall = {
     enable = true;
-    trustedInterFaces = ["tailscale0"];
+    trustedInterfaces = ["tailscale0"];
     allowedUDPPorts = [config.services.tailscale.port];
-  }
+  };
 
   virtualisation = {
     docker = {
@@ -226,9 +223,9 @@
       rootless = {
         enable = true;
 	setSocketVariable = true;
-      }
-    }
-  }
+      };
+    };
+  };
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;
