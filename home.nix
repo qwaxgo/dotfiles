@@ -10,7 +10,7 @@
     ./browser.nix
     ./apps.nix
     ./plasma.nix
-  ]
+  ];
   home = rec {
     username = "qwaxgo";
     homeDirectory = "/home/${username}";
