@@ -1,5 +1,16 @@
 { config, pkgs, ...}:
 {
+  imports = [
+    ./zsh.nix
+    ./starship.nix
+    ./neovim.nix
+    ./direnv.nix
+    ./development.nix
+    ./wezterm.nix
+    ./browser.nix
+    ./apps.nix
+    ./plasma.nix
+  ]
   home = rec {
     username = "qwaxgo";
     homeDirectory = "/home/${username}";

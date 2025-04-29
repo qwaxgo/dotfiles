@@ -58,7 +58,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  
+   
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
@@ -130,9 +130,6 @@
     shell = pkgs.zsh;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -159,9 +156,6 @@
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
-    };
-    starship = {
-      enable = true;
     };
     zsh = {
       enable = true;
