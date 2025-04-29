@@ -6,7 +6,6 @@
     discord
     discord-ptb
     vlc
-    gnome.evince # PDFビューアー
     parsec-bin # 超速いリモートデスクトップクライアント
     remmina # VNCクライアント
     slack
