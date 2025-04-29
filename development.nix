@@ -10,6 +10,5 @@
     python313
     zig
     rust-bin.stable.latest.default
-    godot_4
   ];
 }

@@ -11,5 +11,6 @@
     slack
     spotify
     vscode
+    godot_4
   ];
 }
