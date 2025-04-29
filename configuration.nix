@@ -8,8 +8,16 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+    ]
+    ++ (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-intel
+      common-gpu-intel
+      common-pc-ssd
+      common-pc-laptop
+    ])
+    ++ [
+      inputs.xremap.nixosModules.default
     ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -26,21 +34,21 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-  };i
-
-  # 環境に応じてインポートするモジュールを変更してください
-
-   (with inputs.nixos-hardware.nixosModules; [
-     common-cpu-intel`
-     common-gpu-intel
-     common-pc-ssd
-     common-pc-laptop
-   ]);
-   # xremapのNixOS modulesを使えるようにする
-   [
-     inputs.xremap.nixosModules.default
-   ]
-
+  };
+  services.xremap = {
+    userName = "qwaxgo";
+    serviceMode = "system";
+    config = {
+      modmap = [
+        {
+          name = "CapsLock is dead";
+	  remap = {
+	    CapsLock = "Shift_L";
+	  };
+	}
+      ];
+    };
+  };
   networking.hostName = "nixos-qwaxgo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
