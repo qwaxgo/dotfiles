@@ -1,3 +1,4 @@
+{ config, pkgs, ...}:
 {
   home = rec {
     username = "qwaxgo";
@@ -8,8 +9,8 @@
 
   home.file = {
     "wallpaper.png" = {
-      target = "Wallpaper/wallpaper.png";
-      source = ./wallpaper.png;
+      target = "Wallpaper/wallpaper.png"; # ~/Wallpaper/wallpaper.pngに配置
+      source = ./wallpaper.png; # 配置するファイル
     };
   };
 
@@ -18,6 +19,7 @@
     bottom
     eza
     httpie
+    pingu
     ripgrep
   ];
 }
