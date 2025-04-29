@@ -27,5 +27,4 @@ return {
 	-- Misc
 	use_ime = true, -- Enable IME
 	check_for_updates = false, -- Disable update check
-	audible_bell = "Enabled", -- Disable bell
 }
