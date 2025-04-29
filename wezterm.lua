@@ -6,9 +6,9 @@ return {
 
 	-- Font
 	font = wezterm.font_with_fallback({
-		{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
-		{ family = "JetBrainsMono Nerd Font", weight = "Regular", assume_emoji_presentation = true },
-		{ family = "Noto Sans CJK JP" },
+		{ family = "Cica", weight = "Regular" },
+		{ family = "Cica", weight = "Regular", assume_emoji_presentation = true },
+        { family = "Noto Fonts Emoji", weight = "Regular"}
 	}),
 	font_size = 14.0,
 
