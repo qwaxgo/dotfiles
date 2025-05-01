@@ -163,6 +163,20 @@
     noisetorch.enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs;
+    [
+      xdg-desktop-portal-kde
+    ];
+  }
+
+  environment.systemPackages = with pkgs; [
+    qt6.gull
+    bluedevil
+    bluez
+  ]
+
   i18n.inputMethod = {
     enabled = "fcitx5";
     enable = true;

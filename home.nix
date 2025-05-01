@@ -32,5 +32,7 @@
     httpie
     pingu
     ripgrep
+    bluez-tools
+    kdePackages.kdeconnect-kde
   ];
 }
