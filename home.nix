@@ -32,7 +32,10 @@
     httpie
     pingu
     ripgrep
+    blueman
     bluez-tools
-    kdePackages.kdeconnect-kde
+    qt6ct
   ];
+
+  home.sessionVariables.QT_QPA_PLATFORM= "wayland";
 }

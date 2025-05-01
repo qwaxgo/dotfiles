@@ -49,6 +49,12 @@
       ];
     };
   };
+  # Bluetooth Setting
+  hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+  };
+
   networking.hostName = "nixos-qwaxgo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -170,12 +176,6 @@
       xdg-desktop-portal-kde
     ];
   }
-
-  environment.systemPackages = with pkgs; [
-    qt6.gull
-    bluedevil
-    bluez
-  ]
 
   i18n.inputMethod = {
     enabled = "fcitx5";
