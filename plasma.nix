@@ -1,8 +1,7 @@
 {pkgs, ...}: 
 {
   environment.systemPackages = with pkgs; [
-    libxcb
-    libxcb.lib
+    xorg.libxcb
     xorg.xcbutil
     xorg.xcbutilcursor
     qt6.qtwayland
