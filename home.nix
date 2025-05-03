@@ -32,7 +32,6 @@
     httpie
     pingu
     ripgrep
-    blueman
     bluez-tools
     qt6ct
   ];

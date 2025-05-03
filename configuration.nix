@@ -159,7 +159,7 @@
   # };
   programs = {
     git = {
-      enable=true;
+      enable = true;
     };
     neovim = {
       enable = true;
@@ -172,14 +172,6 @@
     };
     noisetorch.enable = true;
   };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs;
-    [
-      xdg-desktop-portal-kde
-    ];
-  }
 
   i18n.inputMethod = {
     enabled = "fcitx5";
