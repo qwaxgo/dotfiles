@@ -27,6 +27,6 @@
     ];
 
     # ~/.config/nvim/init.luaに文字列が展開される
-    extraLuaConfig = builtins.readFile ./init.lua;
+    extraLuaConfig = builtins.readFile ./nvim/init.lua;
   };
 }
