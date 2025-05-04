@@ -144,6 +144,12 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    (vivaldi.overrideAttrs
+      (oldAttrs: {
+        dontWrapQtApps = false;
+        dontPatchELF = true;
+        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
+    })) 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -168,6 +174,9 @@
     };
     noisetorch.enable = true;
     dconf = {
+      enable = true;
+    };
+    wl-clipboard-rs = {
       enable = true;
     };
   };
