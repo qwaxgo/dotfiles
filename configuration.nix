@@ -172,10 +172,6 @@
     };
   };
 
-  qt = {
-    enable = true;
-  };
-  
   i18n.inputMethod = {
     enabled = "fcitx5";
     enable = true;
