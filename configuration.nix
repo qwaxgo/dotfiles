@@ -172,11 +172,10 @@
     zsh = {
       enable = true;
     };
-    noisetorch.enable = true;
-    dconf = {
+    noisetorch = {
       enable = true;
     };
-    wl-clipboard-rs = {
+    dconf = {
       enable = true;
     };
   };

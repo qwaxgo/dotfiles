@@ -34,6 +34,7 @@
     ripgrep
     bluez-tools
     qt6ct
+    wl-clipboard-rs
   ];
 
   home.sessionVariables.QT_QPA_PLATFORM= "wayland";
