@@ -144,10 +144,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    xorg.libxcb
-    xorg.xcbutil
-    xorg.xcbutilcursor
-    qt6.qtwayland
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -171,8 +167,15 @@
       enable = true;
     };
     noisetorch.enable = true;
+    dconf = {
+      enable = true;
+    };
   };
 
+  qt = {
+    enable = true;
+  };
+  
   i18n.inputMethod = {
     enabled = "fcitx5";
     enable = true;
