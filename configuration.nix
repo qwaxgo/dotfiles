@@ -55,6 +55,12 @@
       powerOnBoot = true;
   };
 
+  powerManagement.enable = true;
+
+  services.thermald = {
+    enable = true;
+  };
+
   networking.hostName = "nixos-qwaxgo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -148,7 +154,8 @@
         dontWrapQtApps = false;
         dontPatchELF = true;
         nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
-    })) 
+    }))
+    solaar
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -245,7 +252,9 @@
   };
 
   # List services that you want to enable:
-
+  
+  services.udev.packages = with pkgs; [ logitech-udev-rules ];
+  
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
