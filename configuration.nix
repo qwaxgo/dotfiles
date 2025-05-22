@@ -156,6 +156,7 @@
         nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
     }))
     solaar
+    nixfmt-rfc-style
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -184,6 +185,7 @@
     dconf = {
       enable = true;
     };
+    kdePackages.krdc.enable = true;
   };
 
   i18n.inputMethod = {
@@ -252,9 +254,8 @@
   };
 
   # List services that you want to enable:
-  
+
   services.udev.packages = with pkgs; [ logitech-udev-rules ];
-  
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 

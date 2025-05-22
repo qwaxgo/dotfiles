@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    solaar = {
-      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
@@ -20,6 +16,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./kvm.nix
         ];
 	specialArgs = {
 	  inherit inputs;
@@ -43,9 +40,3 @@
     };
   };
 }
-
-
-
-
-
-

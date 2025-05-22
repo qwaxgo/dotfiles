@@ -35,7 +35,15 @@
     bluez-tools
     qt6ct
     wl-clipboard-rs
+    virt-manager
+    virt-viewer
+    quickemu
+    quickgui
+    gnome.gnome-boxes
+    trayscale
   ];
+
+  programs.virt-manager.enable = true;
 
   home.sessionVariables.QT_QPA_PLATFORM= "wayland";
 }
