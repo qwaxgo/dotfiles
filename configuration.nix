@@ -169,6 +169,7 @@
     }))
     solaar
     nixfmt-rfc-style
+    nil
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

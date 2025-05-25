@@ -1,11 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     gh
     gcc
     go
     nodejs_22
     nodePackages.pnpm
-    nodePackages.wrangler
+    # nodePackages.wrangler
     deno
     bun
     python313

@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./zsh.nix
@@ -10,40 +13,36 @@
     ./browser.nix
     ./apps.nix
     ./plasma.nix
-    ./onedrive.nix
   ];
   home = rec {
     username = "qwaxgo";
     homeDirectory = "/home/${username}";
-    stateVersion = "24.11";
+    stateVersion = "25.05";
+    sessionVariables.QT_QPA_PLATFORM = "wayland";
+    file = {
+      "wallpaper.png" = {
+        target = "Wallpaper/wallpaper.png"; # ~/Wallpaper/wallpaper.pngに配置
+        source = ./wallpaper.png; # 配置するファイル
+      };
+    };
+    packages = with pkgs; [
+      bat
+      bottom
+      eza
+      httpie
+      ripgrep
+      bluez-tools
+      qt6ct
+      wl-clipboard-rs
+      virt-manager
+      virt-viewer
+      quickemu
+      quickgui
+      gnome-boxes
+      trayscale
+      onedrive
+      onedrivegui
+    ];
   };
   programs.home-manager.enable = true;
-
-  home.file = {
-    "wallpaper.png" = {
-      target = "Wallpaper/wallpaper.png"; # ~/Wallpaper/wallpaper.pngに配置
-      source = ./wallpaper.png; # 配置するファイル
-    };
-  };
-
-  home.packages = with pkgs; [
-    bat
-    bottom
-    eza
-    httpie
-    pingu
-    ripgrep
-    bluez-tools
-    qt6ct
-    wl-clipboard-rs
-    virt-manager
-    virt-viewer
-    quickemu
-    quickgui
-    gnome.gnome-boxes
-    trayscale
-    onedrive
-  ];
-
-  home.sessionVariables.QT_QPA_PLATFORM = "wayland";
 }

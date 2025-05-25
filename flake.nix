@@ -8,7 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
-    nil.url = "github:oxalica/nil";
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: {
@@ -18,6 +21,8 @@
         modules = [
           ./configuration.nix
           ./kvm.nix
+          inputs.nix-ld.nixosModules.nix-ld
+          { programs.nix-ld.dev.enable = true; }
         ];
         specialArgs = {
           inherit inputs;
