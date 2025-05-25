@@ -3,7 +3,6 @@
   boot.kernelModules = [ "kvm-intel" ];   # AMD なら kvm-amd
 
   virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemuSwTpm.enable = true;  # TPM エミュ
   virtualisation.spiceUSBRedirection.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 5900 5901 ]; # VNC 用
@@ -19,6 +18,4 @@
 
   networking.bridges.br0.interfaces = [ "wlp0s20f3" ];  # Wi-Fi NIC
   networking.interfaces.br0.useDHCP = true;
-
-  hardware.usb.smartcard.enable = true;
 }

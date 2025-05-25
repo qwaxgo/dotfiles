@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   imports = [
     ./zsh.nix
@@ -10,6 +10,7 @@
     ./browser.nix
     ./apps.nix
     ./plasma.nix
+    ./onedrive.nix
   ];
   home = rec {
     username = "qwaxgo";
@@ -41,9 +42,8 @@
     quickgui
     gnome.gnome-boxes
     trayscale
+    onedrive
   ];
 
-  programs.virt-manager.enable = true;
-
-  home.sessionVariables.QT_QPA_PLATFORM= "wayland";
+  home.sessionVariables.QT_QPA_PLATFORM = "wayland";
 }

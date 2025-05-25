@@ -2,11 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
@@ -27,7 +33,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
     gc = {
       automatic = true;
@@ -42,17 +51,17 @@
       modmap = [
         {
           name = "CapsLock is dead";
-	  remap = {
-	    CapsLock = "Shift_L";
-	  };
-	}
+          remap = {
+            CapsLock = "Shift_L";
+          };
+        }
       ];
     };
   };
   # Bluetooth Setting
   hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
+    enable = true;
+    powerOnBoot = true;
   };
 
   powerManagement.enable = true;
@@ -70,7 +79,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-   
+
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
@@ -110,9 +119,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  
+
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -134,10 +143,13 @@
   users.users.qwaxgo = {
     isNormalUser = true;
     description = "qwaxgo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
-   #  thunderbird
+      kdePackages.krdc
     ];
     shell = pkgs.zsh;
   };
@@ -148,12 +160,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     (vivaldi.overrideAttrs (oldAttrs: {
-        dontWrapQtApps = false;
-        dontPatchELF = true;
-        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
+      dontWrapQtApps = false;
+      dontPatchELF = true;
+      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
     }))
     solaar
     nixfmt-rfc-style
@@ -185,13 +197,12 @@
     dconf = {
       enable = true;
     };
-    kdePackages.krdc.enable = true;
   };
 
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
     enable = true;
-    fcitx5.addons = with pkgs;[
+    fcitx5.addons = with pkgs; [
       fcitx5-mozc
       fcitx5-gtk
       kdePackages.fcitx5-qt
@@ -202,17 +213,14 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    fontDir.enable = true;
+    packages = with pkgs; [
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
       noto-fonts-emoji
-      nerdfonts
       migu
-    ];
-    fontDir.enable = true;
-    packages = with pkgs; [
-    # Cica
-    # cf. https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/ricty/default.nix
+      # Cica
+      # cf. https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/ricty/default.nix
       (stdenv.mkDerivation rec {
         pname = "cica";
         version = "5.0.3";
@@ -227,28 +235,37 @@
     ];
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-	sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
-	monospace = ["Cica" "Noto Color Emoji"];
-	emoji = ["Noto Color Emoji"];
+        serif = [
+          "Noto Serif CJK JP"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans CJK JP"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "Cica"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
       };
       localConf = ''
-        <?xml version="1.0"?>
-        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-	<fontconfig>
-	  <description>Change default fonts for Steam client</description>
-	  <match>
-	    <test name ="prgname">
-	      <string>steamwebhelper</string>
-            </test>
-	    <test name="family" qual="any">
-	      <string>sans-serif</string>
-            </test>
-	    <edit mode="prepend" name="family">
-	      <string>Migu 1P</string>
-	    </edit>
-          </match>
-	</fontconfig>
+                <?xml version="1.0"?>
+                <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+        	<fontconfig>
+        	  <description>Change default fonts for Steam client</description>
+        	  <match>
+        	    <test name ="prgname">
+        	      <string>steamwebhelper</string>
+                    </test>
+        	    <test name="family" qual="any">
+        	      <string>sans-serif</string>
+                    </test>
+        	    <edit mode="prepend" name="family">
+        	      <string>Migu 1P</string>
+        	    </edit>
+                  </match>
+        	</fontconfig>
       '';
     };
   };
@@ -267,8 +284,8 @@
   # Or disable the firewall altogether.
   networking.firewall = {
     enable = true;
-    trustedInterfaces = ["tailscale0"];
-    allowedUDPPorts = [config.services.tailscale.port];
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
   virtualisation = {
@@ -276,7 +293,7 @@
       enable = true;
       rootless = {
         enable = true;
-	setSocketVariable = true;
+        setSocketVariable = true;
       };
     };
   };

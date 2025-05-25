@@ -1,13 +1,14 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     xremap.url = "github:xremap/nix-flake";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
+    nil.url = "github:oxalica/nil";
   };
 
   outputs = inputs: {
@@ -18,9 +19,9 @@
           ./configuration.nix
           ./kvm.nix
         ];
-	specialArgs = {
-	  inherit inputs;
-	};
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
     homeConfigurations = {
@@ -28,7 +29,7 @@
         pkgs = import inputs.nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
-	  overlays = [(import inputs.rust-overlay)];
+          overlays = [ (import inputs.rust-overlay) ];
         };
         extraSpecialArgs = {
           inherit inputs;
