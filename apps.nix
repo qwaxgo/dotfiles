@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Spotify TUI
   programs.ncspot.enable = true;
 
@@ -11,5 +12,6 @@
     slack
     spotify
     vscode
+    freerdp
   ];
 }
